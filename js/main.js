@@ -62,6 +62,7 @@ chooseCategory.addEventListener('click', function () {
 addButton.addEventListener('click', Add)
 //할일 추가하기 2: Enter키 누를 시 작동
 inputTask.addEventListener('keydown', event => {
+  //영어가 아닐 땐 isComposing 속성을 이용한 설정 필요.
   if (event.key === 'Enter' && !event.isComposing) {
     Add()
   }
