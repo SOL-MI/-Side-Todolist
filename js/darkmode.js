@@ -19,14 +19,14 @@ if (toggle) {
   container.style.background = 'linear-gradient(0deg, #FFEBCE, #EEFFF8)';
 
   //2번 질문
-  //toggle이 true상태면 그믐달이 기본으로 등장하게 하고자 함.
+  // toggle이 true상태면 그믐달이 기본으로 등장하게 하고자 함.
   //아래 코드를 넣으면 toggle=true상태로 저장시키고 껐다가 다시 켰을 때 클릭이벤트가 작동하지 않는 오류 발생
-  d = 'moonPath';
+  // d = 'moonPath';
 }
 
 //클릭이벤트
 darkMode.addEventListener("click", () => {
-  //anime.js
+  //anime.jsg
   //여기에 타임라인을 더한다
   const timeline = anime.timeline({
     duration: 1000,
