@@ -58,8 +58,22 @@ chooseCategory.addEventListener('click', function () {
   }
 })
 
-//add 버튼 클릭 시 작동
-addButton.addEventListener('click', function () {
+//할일 추가히기1 : add 버튼 클릭 시 작동
+addButton.addEventListener('click', Add)
+//할일 추가하기 2: Enter키 누를 시 작동
+inputTask.addEventListener('keydown', event => {
+  if (event.key === 'Enter' && !event.isComposing) {
+    Add()
+  }
+})
+
+//다한 일 체크하기 및 x표 눌러서 삭제하기
+listContainer1.addEventListener("click", checkAndRemove, false)
+listContainer2.addEventListener("click", checkAndRemove, false)
+listContainer3.addEventListener("click", checkAndRemove, false)
+
+//할일 추가하기 함수
+function Add() {
   let li = document.createElement("li");
   li.innerHTML = inputTask.value;
   if (inputTask.value === '') {
@@ -78,15 +92,9 @@ addButton.addEventListener('click', function () {
     span.innerHTML = "\u00d7";
     li.appendChild(span);
   }
-
   inputTask.value = "";
   saveData();
-})
-
-//다한 일 체크하기 및 x표 눌러서 삭제하기
-listContainer1.addEventListener("click", checkAndRemove, false)
-listContainer2.addEventListener("click", checkAndRemove, false)
-listContainer3.addEventListener("click", checkAndRemove, false)
+}
 
 //데이터 저장하기
 function saveData() {
