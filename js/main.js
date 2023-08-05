@@ -27,8 +27,8 @@ const listContainer2 = document.getElementById("list-container-2");
 const listContainer3 = document.getElementById("list-container-3");
 const addButton = document.querySelector(".material-symbols-outlined");
 let titleDate = document.querySelector('.title');
-
 let clickCount = 0;
+
 //제목에 날짜 표기
 let date = new Date();
 let month;
@@ -49,11 +49,9 @@ chooseCategory.addEventListener('click', function () {
       break;
     case 2:
       chooseCategory.innerText = "🏆"
-      console.log("dkdkldl");
       break;
     case 0:
       chooseCategory.innerText = "👻"
-      console.log("hello");
       break;
   }
 })
@@ -81,17 +79,20 @@ function Add() {
     shake();
   } else {
     if (clickCount % 3 === 1 || clickCount === 0) {
-      console.log(clickCount % 3)
       listContainer1.appendChild(li);
     } else if (clickCount % 3 === 2) {
-      console.log(clickCount % 3)
       listContainer2.appendChild(li);
     } else {
       listContainer3.appendChild(li);
     }
-    let span = document.createElement("span");
-    span.innerHTML = "\u00d7";
-    li.appendChild(span);
+
+    let editbtn = document.createElement("span");
+    editbtn.innerHTML = "✎";
+    li.appendChild(editbtn);
+
+    let deletebtn = document.createElement("span");
+    deletebtn.innerHTML = "\u00d7";
+    li.appendChild(deletebtn);
   }
   inputTask.value = "";
   saveData();
@@ -119,13 +120,20 @@ function shake() {
 }
 
 function checkAndRemove(e) {
+  console.log(e)
+  console.log(e.target)
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
     saveData();
   }
-  else if (e.target.tagName === "SPAN") {
+  else if (e.target.outerText === "\u00d7") {
     e.target.parentElement.remove();
     saveData();
+  }else if (e.target.outerText === "✎"){
+    //li.innerHTML 삭제 내용 추가
+    //그자리에 input을 새로 만들어줌 prepend로 앞에 추가.
+    let newInput = document.createElement("input");
+    //enter키 누를 시에 input에 들어온 값을 innerHTML로 저장 + input창 삭제
   }
 }
 
